@@ -13,17 +13,17 @@ namespace NumberTranslate.Test
             Translate newTranslation = new Translate(userNumber);
             newTranslation.ConvertNumber();
             string result = newTranslation.StringOutput;
-            Assert.AreEqual("five", result);
+            Assert.AreEqual("   five", result);
         }
 
         [TestMethod]
         public void NumberTranslator_TurnsTwoDigitsIntoString_TwentyFive()
         {
-            string userNumber = "18";
+            string userNumber = "68";
             Translate newTranslation = new Translate(userNumber);
             newTranslation.ConvertNumber();
             string result = newTranslation.StringOutput;
-            Assert.AreEqual("eighteen ", result);
+            Assert.AreEqual("  sixty eight", result);
         }
     }
 }

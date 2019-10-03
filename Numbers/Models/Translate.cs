@@ -19,54 +19,50 @@ namespace NumberTranslate.Models
 
         public void ConvertNumber()
         {
-            char[] numberArray = Number.ToCharArray();
+            string zeroes = "";
+            for (int i = 0; i < 4-Number.Length; i++)
+            {
+                zeroes += "0";
+            }
+            string numberToConvert = zeroes + Number;
+
+            char[] numberArray = numberToConvert.ToCharArray();
             string[] wordsArray = new string[numberArray.Length];
 
-
-            if (numberArray.Length == 1)
-            {
-                wordsArray[0] = onesDictionary[numberArray[0]];
-            }
-            else if (numberArray.Length == 2)
-            {
-                if (numberArray[0] == '1')
+            if (numberArray[2] == '1')
+                if (numberArray[3] == '0')
                 {
-                    if (numberArray[1] == '0')
-                    {
-                        wordsArray[0] = "ten";
-                    }
-                    else if (numberArray[1] == '1')
-                    {
-                        wordsArray[0] = "eleven";
-                    }
-                    else if (numberArray[1] == '2')
-                    {
-                        wordsArray[0] = "twelve";
-                    }
-                    else if (numberArray[1] == '3')
-                    {
-                        wordsArray[0] = "thirteen";
-                    }
-                    else if (numberArray[1] == '5')
-                    {
-                        wordsArray[0] = "fifteen";
-                    }
-                    else if (numberArray[1] == '8')
-                    {
-                        wordsArray[0] = "eighteen";
-                    }
-                    else
-                    {
-                        wordsArray[0] = onesDictionary[numberArray[1]] + "teen";
-                    }
+                    wordsArray[2] = "ten";
+                }
+                else if (numberArray[3] == '1')
+                {
+                    wordsArray[2] = "eleven";
+                }
+                else if (numberArray[3] == '2')
+                {
+                    wordsArray[2] = "twelve";
+                }
+                else if (numberArray[3] == '3')
+                {
+                    wordsArray[2] = "thirteen";
+                }
+                else if (numberArray[3] == '5')
+                {
+                    wordsArray[2] = "fifteen";
+                }
+                else if (numberArray[3] == '8')
+                {
+                    wordsArray[2] = "eighteen";
                 }
                 else
                 {
-                    wordsArray[0] = tensDictionary[numberArray[0]];
-                    wordsArray[1] = onesDictionary[numberArray[1]];
+                    wordsArray[0] = onesDictionary[numberArray[1]] + "teen";
                 }
+            else
+            {
+                wordsArray[2] = tensDictionary[numberArray[2]];
+                wordsArray[3] = onesDictionary[numberArray[3]];
             }
-            
             StringOutput = string.Join(" ", wordsArray);
             Console.WriteLine(StringOutput);
         }
