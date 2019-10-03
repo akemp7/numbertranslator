@@ -19,11 +19,11 @@ namespace NumberTranslate.Test
         [TestMethod]
         public void NumberTranslator_TurnsTwoDigitsIntoString_TwentyFive()
         {
-            string userNumber = "25";
+            string userNumber = "18";
             Translate newTranslation = new Translate(userNumber);
             newTranslation.ConvertNumber();
             string result = newTranslation.StringOutput;
-            Assert.AreEqual("twenty five", result);
+            Assert.AreEqual("eighteen ", result);
         }
     }
 }

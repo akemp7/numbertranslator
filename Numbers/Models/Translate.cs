@@ -29,11 +29,46 @@ namespace NumberTranslate.Models
             }
             else if (numberArray.Length == 2)
             {
-                wordsArray[0] = tensDictionary[numberArray[0]];
-                wordsArray[1] = onesDictionary[numberArray[1]];
+                if (numberArray[0] == '1')
+                {
+                    if (numberArray[1] == '0')
+                    {
+                        wordsArray[0] = "ten";
+                    }
+                    else if (numberArray[1] == '1')
+                    {
+                        wordsArray[0] = "eleven";
+                    }
+                    else if (numberArray[1] == '2')
+                    {
+                        wordsArray[0] = "twelve";
+                    }
+                    else if (numberArray[1] == '3')
+                    {
+                        wordsArray[0] = "thirteen";
+                    }
+                    else if (numberArray[1] == '5')
+                    {
+                        wordsArray[0] = "fifteen";
+                    }
+                    else if (numberArray[1] == '8')
+                    {
+                        wordsArray[0] = "eighteen";
+                    }
+                    else
+                    {
+                        wordsArray[0] = onesDictionary[numberArray[1]] + "teen";
+                    }
+                }
+                else
+                {
+                    wordsArray[0] = tensDictionary[numberArray[0]];
+                    wordsArray[1] = onesDictionary[numberArray[1]];
+                }
             }
             
             StringOutput = string.Join(" ", wordsArray);
-            Console.WriteLine(StringOutput);        }
+            Console.WriteLine(StringOutput);
+        }
     }
 }
