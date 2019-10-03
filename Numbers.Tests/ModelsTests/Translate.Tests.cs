@@ -17,13 +17,33 @@ namespace NumberTranslate.Test
         }
 
         [TestMethod]
-        public void NumberTranslator_TurnsTwoDigitsIntoString_TwentyFive()
+        public void NumberTranslator_TurnsTwoDigitsIntoString_SixtyEight()
         {
             string userNumber = "68";
             Translate newTranslation = new Translate(userNumber);
             newTranslation.ConvertNumber();
             string result = newTranslation.StringOutput;
             Assert.AreEqual("  sixty eight", result);
+        }
+
+        [TestMethod]
+        public void NumberTranslator_TurnsThreeDigitsIntoString_OnehundredFifteen()
+        {
+            string userNumber = "115";
+            Translate newTranslation = new Translate(userNumber);
+            newTranslation.ConvertNumber();
+            string result = newTranslation.StringOutput;
+            Assert.AreEqual(" one hundred fifteen ", result);
+        }
+
+         [TestMethod]
+        public void NumberTranslator_TurnsFourDigitsIntoString_SixThousandFour()
+        {
+            string userNumber = "6004";
+            Translate newTranslation = new Translate(userNumber);
+            newTranslation.ConvertNumber();
+            string result = newTranslation.StringOutput;
+            Assert.AreEqual("six thousand   four", result);
         }
     }
 }
