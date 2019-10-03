@@ -5,12 +5,13 @@ namespace NumberTranslate.Models
 {
     public class Translate
     {
-        public int Number { get; set; }
+        public string Number { get; set; }
         public string StringOutput { get; set; }
 
-        public Dictionary<int, string> onesDictionary = new Dictionary<int, string>() { {0, "zero"}, {1, "one"}, {2, "two"}, {3, "three"}, {4, "four"}, {5, "five"}, {6, "six"}, {7, "seven"}, {8, "eight"}, {9, "nine"} };
+        public Dictionary<char, string> onesDictionary = new Dictionary<char, string>() { {'0', "zero"}, {'1', "one"}, {'2', "two"}, {'3', "three"}, {'4', "four"}, {'5', "five"}, {'6', "six"}, {'7', "seven"}, {'8', "eight"}, {'9', "nine"} };
+        public Dictionary<char, string> tensDictionary = new Dictionary<char, string>() { {'0', ""}, {'1', ""}, {'2', "twenty"}, {'3', "thirty"}, {'4', "forty"}, {'5', "fifty"}, {'6', "sixty"}, {'7', "seventy"}, {'8', "eighty"}, {'9', "ninety"} };
 
-        public Translate (int number)
+        public Translate (string number)
         {
             Number = number;
             StringOutput = "";
@@ -18,7 +19,21 @@ namespace NumberTranslate.Models
 
         public void ConvertNumber()
         {
-            StringOutput = onesDictionary[Number];
-        }
+            char[] numberArray = Number.ToCharArray();
+            string[] wordsArray = new string[numberArray.Length];
+
+
+            if (numberArray.Length == 1)
+            {
+                wordsArray[0] = onesDictionary[numberArray[0]];
+            }
+            else if (numberArray.Length == 2)
+            {
+                wordsArray[0] = tensDictionary[numberArray[0]];
+                wordsArray[1] = onesDictionary[numberArray[1]];
+            }
+            
+            StringOutput = string.Join(" ", wordsArray);
+            Console.WriteLine(StringOutput);        }
     }
 }
